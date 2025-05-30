@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbrggekg8glkc"]
+
+[ext_resource type="PackedScene" uid="uid://blia2qgvd8smd" path="res://entities/environmental/scenes/Breakable.tscn" id="1_ht1uc"]
+[ext_resource type="Texture2D" uid="uid://443pxypcjk83" path="res://assets/tilesets/props/Props-All.png" id="2_5uu7t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46y1q"]
+atlas = ExtResource("2_5uu7t")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o54ku"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46y1q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Rock" instance=ExtResource("1_ht1uc")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_o54ku")

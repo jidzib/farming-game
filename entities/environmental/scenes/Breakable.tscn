@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://blia2qgvd8smd"]
+
+[ext_resource type="Script" uid="uid://cbp3l046bnyjd" path="res://entities/environmental/scripts/breakable.gd" id="1_5hp3m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hp3m"]
+size = Vector2(0, 0)
+
+[node name="Breakable" type="Node2D"]
+script = ExtResource("1_5hp3m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="respawn" type="Timer" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_5hp3m")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[connection signal="timeout" from="respawn" to="." method="_on_respawn_timeout"]

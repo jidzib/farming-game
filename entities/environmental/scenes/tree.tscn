@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7pun6whive71"]
+
+[ext_resource type="PackedScene" uid="uid://blia2qgvd8smd" path="res://entities/environmental/scenes/Breakable.tscn" id="1_h3ok4"]
+[ext_resource type="Script" uid="uid://ddcihu7nf5g07" path="res://entities/environmental/scripts/tree.gd" id="1_vplca"]
+[ext_resource type="Texture2D" uid="uid://bc0bl20qrk4wr" path="res://assets/tilesets/props/Tree.png" id="2_viusy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrj0o"]
+atlas = ExtResource("2_viusy")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o08hv"]
+atlas = ExtResource("2_viusy")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv7ah"]
+atlas = ExtResource("2_viusy")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgfnr"]
+atlas = ExtResource("2_viusy")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_401ec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"broken",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrj0o")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o08hv")
+}],
+"loop": false,
+"name": &"spring",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv7ah")
+}],
+"loop": false,
+"name": &"summer",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgfnr")
+}],
+"loop": false,
+"name": &"winter",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o08hv"]
+size = Vector2(16, 16)
+
+[node name="tree_test" instance=ExtResource("1_h3ok4")]
+script = ExtResource("1_vplca")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_401ec")
+animation = &"winter"
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_o08hv")
+
+[node name="Marker2D" parent="." index="3"]
+position = Vector2(0, 14)

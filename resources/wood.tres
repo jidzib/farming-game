@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bt5dgb4eegxu0"]
+
+[ext_resource type="Script" uid="uid://ca2auqipn5061" path="res://items/scripts/item.gd" id="1_gt3uy"]
+[ext_resource type="Texture2D" uid="uid://c6vo5rqmvmyhw" path="res://assets/items/wood.png" id="1_r76xb"]
+
+[resource]
+script = ExtResource("1_gt3uy")
+name = "Wood"
+description = "from a tree"
+icon = ExtResource("1_r76xb")
+type = 0
+quantity = 1
+id = 1
+metadata/_custom_type_script = "uid://ca2auqipn5061"

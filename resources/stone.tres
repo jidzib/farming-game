@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bcajqeotdfp6q"]
+
+[ext_resource type="Script" uid="uid://ca2auqipn5061" path="res://items/scripts/item.gd" id="1_bt4yj"]
+[ext_resource type="Texture2D" uid="uid://dkbu38qj4mh4k" path="res://assets/items/stone.png" id="1_c7xck"]
+
+[resource]
+script = ExtResource("1_bt4yj")
+name = ""
+description = ""
+icon = ExtResource("1_c7xck")
+type = 0
+quantity = 1
+id = 2
+metadata/_custom_type_script = "uid://ca2auqipn5061"
