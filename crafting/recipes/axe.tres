@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=8 format=3 uid="uid://dfgljggyfv2p8"]
+
+[ext_resource type="Script" uid="uid://ca2auqipn5061" path="res://items/scripts/item.gd" id="1_7c5wc"]
+[ext_resource type="Resource" uid="uid://d0cx4vssc3jsr" path="res://resources/axe.tres" id="1_yehci"]
+[ext_resource type="Script" uid="uid://ugcplwgws2yv" path="res://crafting/recipe.gd" id="2_3tjg7"]
+[ext_resource type="Texture2D" uid="uid://c6vo5rqmvmyhw" path="res://assets/items/wood.png" id="3_y0x4x"]
+[ext_resource type="Texture2D" uid="uid://dkbu38qj4mh4k" path="res://assets/items/stone.png" id="3_yehci"]
+
+[sub_resource type="Resource" id="Resource_hxh5a"]
+resource_local_to_scene = true
+script = ExtResource("1_7c5wc")
+name = "Rock"
+description = ""
+icon = ExtResource("3_yehci")
+type = 0
+quantity = 3
+id = 2
+metadata/_custom_type_script = "uid://ca2auqipn5061"
+
+[sub_resource type="Resource" id="Resource_yehci"]
+script = ExtResource("1_7c5wc")
+name = "Wood"
+description = "from a tree"
+icon = ExtResource("3_y0x4x")
+type = 0
+quantity = 2
+id = 1
+metadata/_custom_type_script = "uid://ca2auqipn5061"
+
+[resource]
+script = ExtResource("2_3tjg7")
+item = ExtResource("1_yehci")
+requirements = Array[ExtResource("1_7c5wc")]([SubResource("Resource_hxh5a"), SubResource("Resource_yehci")])
+type = 0
+metadata/_custom_type_script = "uid://ugcplwgws2yv"

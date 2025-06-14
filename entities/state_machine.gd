@@ -4,9 +4,9 @@ extends Node
 
 var current_state: State
 
-func init(parent: Player) -> void:
+func init(parent) -> void:
 	for child in get_children():
-		child.parent = parent	
+		child.parent = parent
 		change_state(starting_state)
 		print(child.parent)
 

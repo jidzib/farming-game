@@ -1,0 +1,157 @@
+[gd_scene load_steps=19 format=3 uid="uid://g7lkcd3f6h1u"]
+
+[ext_resource type="Script" uid="uid://bj3j188pk274n" path="res://entities/chicken/chicken.gd" id="1_11xy6"]
+[ext_resource type="Texture2D" uid="uid://l7o2o8ijkrdx" path="res://assets/mobs/chicken/Chicken.png" id="2_dslh4"]
+[ext_resource type="Script" uid="uid://bifrgblx5ja0w" path="res://entities/state_machine.gd" id="3_tckk5"]
+[ext_resource type="Script" uid="uid://4ikudyiqg34u" path="res://entities/chicken/states/idle.gd" id="4_yupgp"]
+[ext_resource type="Script" uid="uid://cfr35od5xxict" path="res://entities/chicken/states/wander.gd" id="5_yupgp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dslh4"]
+size = Vector2(11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5conp"]
+atlas = ExtResource("2_dslh4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tckk5"]
+atlas = ExtResource("2_dslh4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yupgp"]
+atlas = ExtResource("2_dslh4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imllr"]
+atlas = ExtResource("2_dslh4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6bns"]
+atlas = ExtResource("2_dslh4")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tb3j"]
+atlas = ExtResource("2_dslh4")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n3vg"]
+atlas = ExtResource("2_dslh4")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dojxi"]
+atlas = ExtResource("2_dslh4")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcrr7"]
+atlas = ExtResource("2_dslh4")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j2fu"]
+atlas = ExtResource("2_dslh4")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5conp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5conp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tckk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yupgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imllr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6bns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tb3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n3vg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dojxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcrr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j2fu")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yupgp"]
+radius = 49.0102
+
+[node name="Chicken" type="CharacterBody2D"]
+script = ExtResource("1_11xy6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_dslh4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5conp")
+animation = &"walk"
+
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("3_tckk5")
+starting_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("wander_state")]
+script = ExtResource("4_yupgp")
+wander_state = NodePath("../wander")
+
+[node name="switch_state" type="Timer" parent="state_machine/idle"]
+wait_time = 2.0
+
+[node name="wander" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("5_yupgp")
+idle_state = NodePath("../idle")
+
+[node name="switch_state" type="Timer" parent="state_machine/wander"]
+wait_time = 2.0
+
+[node name="down" type="RayCast2D" parent="."]
+target_position = Vector2(0, 25)
+
+[node name="up" type="RayCast2D" parent="."]
+target_position = Vector2(0, -25)
+
+[node name="down_right" type="RayCast2D" parent="."]
+target_position = Vector2(25, 25)
+
+[node name="down_left" type="RayCast2D" parent="."]
+target_position = Vector2(-25, 25)
+
+[node name="right" type="RayCast2D" parent="."]
+target_position = Vector2(25, 0)
+
+[node name="left" type="RayCast2D" parent="."]
+target_position = Vector2(-25, 0)
+
+[node name="up_left" type="RayCast2D" parent="."]
+target_position = Vector2(-25, -25)
+
+[node name="up_right" type="RayCast2D" parent="."]
+target_position = Vector2(25, -25)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_yupgp")
+
+[connection signal="timeout" from="state_machine/idle/switch_state" to="state_machine/idle" method="_on_switch_state_timeout"]
+[connection signal="timeout" from="state_machine/wander/switch_state" to="state_machine/wander" method="_on_switch_state_timeout"]

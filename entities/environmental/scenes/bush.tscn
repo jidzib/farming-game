@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddvws6p7dbeme"]
+
+[ext_resource type="Script" uid="uid://ksbcrh0ramcw" path="res://entities/environmental/scripts/non_interactable.gd" id="1_bi4f8"]
+[ext_resource type="Texture2D" uid="uid://dtnypu5pum3t6" path="res://assets/tilesets/props/Bush.png" id="2_qohuh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdsbo"]
+atlas = ExtResource("2_qohuh")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jnan"]
+atlas = ExtResource("2_qohuh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7nmj"]
+atlas = ExtResource("2_qohuh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4862b"]
+atlas = ExtResource("2_qohuh")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hvgsy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdsbo")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jnan")
+}],
+"loop": false,
+"name": &"spring",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7nmj")
+}],
+"loop": false,
+"name": &"summer",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4862b")
+}],
+"loop": false,
+"name": &"winter",
+"speed": 0.0
+}]
+
+[node name="Bush" type="Node2D"]
+script = ExtResource("1_bi4f8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hvgsy")
+animation = &"spring"
+autoplay = "spring"

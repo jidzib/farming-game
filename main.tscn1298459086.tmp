@@ -1,13 +1,11 @@
-[gd_scene load_steps=132 format=4 uid="uid://crrelisd4evra"]
+[gd_scene load_steps=125 format=4 uid="uid://crrelisd4evra"]
 
 [ext_resource type="Script" uid="uid://cu4q0gl6kmwq6" path="res://entities/player/player.gd" id="1_ryguw"]
 [ext_resource type="Script" uid="uid://by37tktfesuac" path="res://Global.gd" id="1_seu75"]
 [ext_resource type="Texture2D" uid="uid://ltiogv86beat" path="res://assets/character/axe_swing.png" id="2_a6jrf"]
 [ext_resource type="Texture2D" uid="uid://dpfkwrqbhmidu" path="res://assets/character/idle.png" id="2_d13ii"]
 [ext_resource type="Texture2D" uid="uid://58nfs8uuyrog" path="res://assets/character/run.png" id="3_1u8w0"]
-[ext_resource type="Script" uid="uid://ugcplwgws2yv" path="res://crafting/recipe.gd" id="3_come4"]
 [ext_resource type="Texture2D" uid="uid://uxsp3iqdxxpc" path="res://assets/character/walk.png" id="4_0odxb"]
-[ext_resource type="Resource" uid="uid://dfgljggyfv2p8" path="res://crafting/recipes/axe.tres" id="4_h8e4i"]
 [ext_resource type="PackedScene" uid="uid://bfmdtva1eenq" path="res://items/scenes/inventory.tscn" id="5_lswn8"]
 [ext_resource type="Script" uid="uid://bifrgblx5ja0w" path="res://entities/state_machine.gd" id="6_a6jrf"]
 [ext_resource type="Script" uid="uid://b2kuk8gvxysyj" path="res://entities/player/states/idle.gd" id="7_d13ii"]
@@ -37,8 +35,6 @@
 [ext_resource type="Resource" uid="uid://d0cx4vssc3jsr" path="res://resources/axe.tres" id="30_kq58d"]
 [ext_resource type="PackedScene" uid="uid://g7lkcd3f6h1u" path="res://entities/chicken/chicken.tscn" id="34_4k2k6"]
 [ext_resource type="PackedScene" uid="uid://cwsaeoi66cqfn" path="res://structures/scenes/crafting_bench.tscn" id="35_0rl1p"]
-[ext_resource type="Texture2D" uid="uid://dkbu38qj4mh4k" path="res://assets/items/stone.png" id="36_facbu"]
-[ext_resource type="Script" uid="uid://ca2auqipn5061" path="res://items/scripts/item.gd" id="37_b1qrp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryguw"]
 size = Vector2(13, 15)
@@ -1025,47 +1021,13 @@ scenes/1/scene = ExtResource("13_htxhm")
 [sub_resource type="TileSet" id="TileSet_htxhm"]
 sources/0 = SubResource("TileSetScenesCollectionSource_htxhm")
 
-[sub_resource type="Resource" id="Resource_come4"]
-resource_local_to_scene = true
-script = ExtResource("37_b1qrp")
-name = "Rock"
-description = ""
-icon = ExtResource("36_facbu")
-type = 0
-quantity = 1
-id = 2
-metadata/_custom_type_script = "uid://ca2auqipn5061"
-
-[sub_resource type="Resource" id="Resource_h8e4i"]
-resource_local_to_scene = true
-script = ExtResource("37_b1qrp")
-name = "Rock"
-description = ""
-icon = ExtResource("36_facbu")
-type = 0
-quantity = 1
-id = 2
-metadata/_custom_type_script = "uid://ca2auqipn5061"
-
-[sub_resource type="Resource" id="Resource_4lmeg"]
-resource_local_to_scene = true
-script = ExtResource("37_b1qrp")
-name = "Rock"
-description = ""
-icon = ExtResource("36_facbu")
-type = 0
-quantity = 1
-id = 2
-metadata/_custom_type_script = "uid://ca2auqipn5061"
-
 [node name="Main" type="Node"]
 script = ExtResource("1_seu75")
 
-[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+[node name="Player" type="CharacterBody2D" parent="."]
 z_index = 2
 collision_mask = 231
 script = ExtResource("1_ryguw")
-known_recipes = Array[ExtResource("3_come4")]([ExtResource("4_h8e4i"), null, null, null, null, null, null, null])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-0.5, 0.5)
@@ -1147,14 +1109,5 @@ position = Vector2(120, 5)
 
 [node name="Crafting Bench" parent="." instance=ExtResource("35_0rl1p")]
 position = Vector2(-14, -55)
-
-[node name="rock" parent="." instance=ExtResource("29_qsp4k")]
-item = SubResource("Resource_come4")
-
-[node name="rock2" parent="." instance=ExtResource("29_qsp4k")]
-item = SubResource("Resource_h8e4i")
-
-[node name="rock3" parent="." instance=ExtResource("29_qsp4k")]
-item = SubResource("Resource_4lmeg")
 
 [connection signal="timeout" from="Player/state_machine/axe_swing/swinging" to="Player/state_machine/axe_swing" method="_on_swinging_timeout"]

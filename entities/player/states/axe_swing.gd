@@ -11,11 +11,9 @@ func enter() -> void:
 	animations = "axe_swing"
 	parent.animated_sprite.play(animations)
 	$swinging.start()
-	print(parent.raycast.get_collider())
 	
-	var collided_hitbox = parent.raycast.get_collider()
-	if collided_hitbox != null:
-		var collided_object = collided_hitbox.get_parent()
+	var collided_object = parent.raycast.get_collider()
+	if collided_object != null:
 		if collided_object.ID == "tree":
 			collided_object.hit()	
 			print("break tree")

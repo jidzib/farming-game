@@ -6,7 +6,7 @@ class_name State
 @export var move_speed: float = 150
 
 const accel = 10
-var parent: Player
+var parent
 
 func enter() -> void:
 	parent.animated_sprite.play(animations)
@@ -27,10 +27,10 @@ func update_raycast() -> void:
 	# raycast handling
 	var dir_vector = Vector2.ZERO
 	match parent.current_dir:
-		"right": dir_vector = Vector2.RIGHT
-		"left": dir_vector = Vector2.LEFT
-		"up": dir_vector = Vector2.UP
-		"down": dir_vector = Vector2.DOWN
+		Vector2.RIGHT: dir_vector = Vector2.RIGHT
+		Vector2.LEFT: dir_vector = Vector2.LEFT
+		Vector2.UP: dir_vector = Vector2.UP
+		Vector2.DOWN: dir_vector = Vector2.DOWN
 	parent.raycast.target_position = dir_vector * parent.raycast_length
 	parent.raycast.enabled = true
 		

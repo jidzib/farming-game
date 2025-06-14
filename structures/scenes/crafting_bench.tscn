@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwsaeoi66cqfn"]
+
+[ext_resource type="Script" uid="uid://cx2ohxgbks5w6" path="res://structures/scripts/crafting_bench.gd" id="1_iyvlx"]
+[ext_resource type="Texture2D" uid="uid://8exfq87oqtuu" path="res://assets/structures/table.png" id="2_delvv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kp3j2"]
+size = Vector2(14, 13)
+
+[node name="Crafting Bench" type="StaticBody2D"]
+script = ExtResource("1_iyvlx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_kp3j2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_delvv")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI"]
+z_index = 1
+custom_minimum_size = Vector2(96, 30)
+layout_mode = 0
+offset_left = -48.0
+offset_top = -49.0
+offset_right = 48.0
+offset_bottom = -9.0
+
+[node name="GridContainer" type="GridContainer" parent="UI/ScrollContainer"]
+layout_mode = 2
+columns = 4
+
+[node name="Background" type="ColorRect" parent="UI"]
+custom_minimum_size = Vector2(96, 40)
+layout_mode = 0
+offset_left = -48.0
+offset_top = -49.0
+offset_right = 48.0
+offset_bottom = -9.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="Requirements" type="Control" parent="UI"]
+anchors_preset = 0
+offset_left = 54.0
+offset_top = -49.0
+offset_right = 135.0
+offset_bottom = -9.0
+
+[node name="Background" type="ColorRect" parent="UI/Requirements"]
+layout_mode = 0
+offset_right = 81.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.575)
+
+[node name="Label" type="Label" parent="UI/Requirements"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 68.0
+offset_bottom = 13.0
+theme_override_font_sizes/font_size = 8
+text = "Requirements"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Requirements"]
+layout_mode = 0
+offset_top = 12.0
+offset_right = 81.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Requirements/ScrollContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="UI/Requirements"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 15.0
+offset_right = 59.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 8
+text = "Craft"
+
+[connection signal="pressed" from="UI/Requirements/Button" to="." method="_on_button_pressed"]

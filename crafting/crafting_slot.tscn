@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c02i323tmnp0e"]
+
+[ext_resource type="PackedScene" uid="uid://crc55n5g6w58w" path="res://items/scenes/item_slot.tscn" id="1_o21vh"]
+[ext_resource type="Script" uid="uid://c3x066gs4r2gm" path="res://crafting/crafting_slot.gd" id="2_228kh"]
+
+[node name="CraftingSlot" instance=ExtResource("1_o21vh")]
+script = ExtResource("2_228kh")

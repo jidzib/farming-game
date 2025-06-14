@@ -63,19 +63,20 @@ animations = [{
 "speed": 0.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o08hv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3ok4"]
 size = Vector2(16, 16)
 
-[node name="tree_test" instance=ExtResource("1_h3ok4")]
+[node name="tree" instance=ExtResource("1_h3ok4")]
 script = ExtResource("1_vplca")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_401ec")
-animation = &"winter"
+animation = &"spring"
+autoplay = "spring"
 
-[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
-position = Vector2(0, 12)
-shape = SubResource("RectangleShape2D_o08hv")
-
-[node name="Marker2D" parent="." index="3"]
+[node name="Marker2D" parent="." index="2"]
 position = Vector2(0, 14)
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_h3ok4")

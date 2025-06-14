@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dkbu38qj4mh4k" path="res://assets/items/stone.png" id="1_c7xck"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_bt4yj")
-name = ""
+name = "Rock"
 description = ""
 icon = ExtResource("1_c7xck")
 type = 0

@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://hxjtqxuupk8r"]
+
+[ext_resource type="Script" uid="uid://ksbcrh0ramcw" path="res://entities/environmental/scripts/non_interactable.gd" id="1_y72ga"]
+[ext_resource type="Texture2D" uid="uid://iwt1aqv1lvpc" path="res://assets/tilesets/terrain/Fall - simplified.png" id="2_vpdj0"]
+[ext_resource type="Texture2D" uid="uid://bo28xve75l7uy" path="res://assets/tilesets/terrain/Spring - simplified.png" id="3_1m0sy"]
+[ext_resource type="Texture2D" uid="uid://dd0wrfvvj2yok" path="res://assets/tilesets/terrain/Summer - simplified.png" id="4_1de7q"]
+[ext_resource type="Texture2D" uid="uid://3ncercb2uej5" path="res://assets/tilesets/terrain/Winter - simplified.png" id="5_5x2oy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d5l2"]
+atlas = ExtResource("2_vpdj0")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cdqh"]
+atlas = ExtResource("3_1m0sy")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv1j5"]
+atlas = ExtResource("4_1de7q")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot2bs"]
+atlas = ExtResource("5_5x2oy")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_08m66"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d5l2")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cdqh")
+}],
+"loop": false,
+"name": &"spring",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vv1j5")
+}],
+"loop": false,
+"name": &"summer",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot2bs")
+}],
+"loop": false,
+"name": &"winter",
+"speed": 0.0
+}]
+
+[node name="Ground" type="Node2D"]
+script = ExtResource("1_y72ga")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_08m66")
+animation = &"spring"
+autoplay = "spring"

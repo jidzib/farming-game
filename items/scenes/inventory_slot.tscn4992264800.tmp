@@ -42,7 +42,6 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 8
-text = "1"
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -52,3 +51,11 @@ layout_mode = 0
 offset_right = 18.0
 offset_bottom = 18.0
 texture = ExtResource("2_y2hvv")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 18.0
+offset_bottom = 18.0
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -5,11 +5,11 @@ extends State
 
 func enter() -> void:
 	parent.state = parent.States.IDLE
-	if parent.current_dir == "right":
+	if parent.current_dir == Vector2(1, 0): # right
 		self.animations = "idle_side"
-	elif parent.current_dir == "left":
+	elif parent.current_dir == Vector2(-1, 0): # left
 		self.animations = "idle_side"
-	elif parent.current_dir == "down":
+	elif parent.current_dir == Vector2(0, 1): # down
 		self.animations = "idle_down"
 	else:
 		self.animations = "idle_up"
@@ -20,8 +20,8 @@ func enter() -> void:
 	update_raycast()
 	
 func process_input(event: InputEvent) -> State:
-	if parent.inventory.inventory[0][parent.selected_slot_num]:
-		if parent.inventory.inventory[0][parent.selected_slot_num].id == 3 and Input.is_action_just_pressed("use"):
+	if parent.inventory.inventory[0][parent.selected_slot_num].item:
+		if parent.inventory.inventory[0][parent.selected_slot_num].item.id == 3 and Input.is_action_just_pressed("use"):
 			return axe_state
 	if (Input.is_action_just_pressed("up")
 	 or Input.is_action_just_pressed("down") 
